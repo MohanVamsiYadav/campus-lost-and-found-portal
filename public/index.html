@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Campus Lost and Found Portal">
+  <title>Campus Lost & Found Portal</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-icon">🔎</span> Campus<span>Find</span></a>
+  <nav><a href="#home">Home</a><a href="#report">Report item</a><a href="#dashboard">Dashboard</a></nav>
+  <div class="auth-actions" id="authActions"><button class="btn btn-outline" id="loginOpen">Login</button><button class="btn btn-primary" id="registerOpen">Sign up</button></div>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="hero-copy"><span class="eyebrow">SAI UNIVERSITY • CAMPUS COMMUNITY</span><h1>Lost something?<br><span>Let's find it.</span></h1>
+      <p>A simple, trusted place to report lost belongings, share found items and reconnect them with their owners.</p>
+      <div class="hero-actions"><a class="btn btn-primary" href="#report">Report an item</a><a class="btn btn-light" href="#listings">Browse items</a></div>
+    </div><div class="hero-art"><div class="art-circle">🔍</div><div class="floating-card card-one">🎒 <span><b>Found an item?</b><small>Help its owner find it</small></span></div><div class="floating-card card-two">📱 <span><b>Lost something?</b><small>Search campus reports</small></span></div></div>
+  </section>
+  <section class="stats" id="stats"><div><strong id="totalCount">—</strong><span>Reported items</span></div><div><strong id="lostCount">—</strong><span>Lost reports</span></div><div><strong id="foundCount">—</strong><span>Found items</span></div><div><strong>1</strong><span>Campus community</span></div></section>
+  <section class="section" id="listings">
+    <div class="section-heading"><div><span class="eyebrow">COMMUNITY LISTINGS</span><h2>Recently reported items</h2><p>Search the latest lost and found reports around campus.</p></div><button class="btn btn-outline" id="refreshBtn">↻ Refresh</button></div>
+    <div class="filters"><input id="searchInput" placeholder="Search item or description…"><select id="categoryFilter"><option value="">All categories</option><option>Accessories</option><option>Electronics</option><option>Documents</option><option>Books</option><option>Other</option></select><input id="locationFilter" placeholder="Location"><select id="typeFilter"><option value="">Lost & found</option><option value="lost">Lost</option><option value="found">Found</option></select><select id="sortFilter"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select><button class="btn btn-primary" id="searchBtn">Search</button></div>
+    <div class="item-grid" id="itemGrid"><div class="empty">Loading campus reports…</div></div>
+  </section>
+  <section class="section report-section" id="report">
+    <div class="section-heading"><div><span class="eyebrow">MAKE A REPORT</span><h2>Help reunite an item</h2><p>Sign in to submit a lost or found item report.</p></div></div>
+    <form id="itemForm" class="form-card">
+      <div class="form-grid"><label>Report type<select name="type" required><option value="lost">I lost an item</option><option value="found">I found an item</option></select></label>
+      <label>Item name<input name="title" required maxlength="100" placeholder="e.g. Black wallet"></label>
+      <label>Category<select name="category" required><option value="">Choose category</option><option>Accessories</option><option>Electronics</option><option>Documents</option><option>Books</option><option>Other</option></select></label>
+      <label>Location<input name="location" required placeholder="e.g. Library, Block A"></label>
+      <label>Date lost/found<input name="itemDate" type="date" required></label>
+      <label>Image URL (optional)<input name="imageUrl" type="url" placeholder="https://…"></label>
+      <label class="full">Description<textarea name="description" required rows="3" placeholder="Describe the item and identifying details…"></textarea></label></div>
+      <button class="btn btn-primary" type="submit">Submit report</button><p class="form-message" id="itemMessage"></p>
+    </form>
+  </section>
+  <section class="section dashboard-section" id="dashboard">
+    <div class="section-heading"><div><span class="eyebrow">YOUR ACCOUNT</span><h2>Dashboard</h2><p id="dashboardIntro">Log in to manage your reports and claims.</p></div><button class="btn btn-outline hidden" id="logoutBtn">Logout</button></div>
+    <div class="dashboard-grid"><div class="panel"><h3>My listings</h3><div id="myListings" class="compact-list">Sign in to view your listings.</div></div><div class="panel"><h3>My claims</h3><div id="myClaims" class="compact-list">Sign in to view your claims.</div></div></div>
+    <div class="panel admin-panel hidden" id="adminPanel"><h3>Admin overview</h3><div id="adminStats" class="admin-stats"></div><h3>Claims to review</h3><div id="adminClaims"></div></div>
+  </section>
+</main>
+<footer><b>CampusFind</b><span>Campus Lost and Found Portal · Sai University · 2026</span></footer>
+<div class="modal hidden" id="authModal"><div class="modal-card"><button class="modal-close" id="modalClose">×</button><h2 id="authTitle">Login</h2><form id="authForm"><label id="nameWrap" class="hidden">Full name<input name="name" autocomplete="name"></label><label>Email<input name="email" type="email" required autocomplete="email"></label><label>Password<input name="password" type="password" required minlength="8" autocomplete="current-password"></label><button class="btn btn-primary full-button" id="authSubmit">Login</button><p class="form-message" id="authMessage"></p></form><p class="switch-auth" id="switchAuth">New here? <a href="#">Create an account</a></p></div></div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body></html>
